@@ -9,7 +9,7 @@
         android:id="@+id/FirstFragment"
         android:name="com.mbds.newsletter.fragments.HomeFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/home_fragment">
+        tools:layout="@layout/fragment_home">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"

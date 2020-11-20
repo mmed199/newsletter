@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
 import com.mbds.newsletter.changeFragment
-import com.mbds.newsletter.databinding.HomeFragmentBinding
+import com.mbds.newsletter.databinding.FragmentHomeBinding
 import com.mbds.newsletter.models.Source
 import com.mbds.newsletter.repositories.NewsApiRepository
 import com.mbds.newsletter.utils.Countries
@@ -25,7 +25,7 @@ import java.util.*
 
 class HomeFragment : Fragment() {
 
-    private var _binding: HomeFragmentBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val countriesUtil : Countries = Countries()
     private val repository: NewsApiRepository = NewsApiRepository()
@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = HomeFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }

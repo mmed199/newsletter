@@ -10,7 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mbds.newsletter.R
+import com.mbds.newsletter.adapters.ArticleAdapter
 import com.mbds.newsletter.databinding.FragmentArticlesBinding
+import com.mbds.newsletter.models.Article
 import com.mbds.newsletter.models.ArticlesResponse
 import com.mbds.newsletter.models.Source
 import com.mbds.newsletter.repositories.NewsApiRepository
@@ -29,6 +31,8 @@ class ArticlesFragment : Fragment() {
 
     private lateinit var binding: FragmentArticlesBinding
     private val repository: NewsApiRepository = NewsApiRepository()
+    private val adapter = ArticleAdapter(mutableListOf())
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -42,10 +46,10 @@ class ArticlesFragment : Fragment() {
             getData(source = source, category = category, country = country, action =   action)
         }
 
-        /*val recyclerView: RecyclerView = view.findViewById(R.id.article_recycler_view)
-        val adapterRecycler = articleAdapter
+        val recyclerView: RecyclerView = view.findViewById(R.id.article_recycler_view)
+        val adapterRecycler = adapter
         recyclerView.layoutManager = LinearLayoutManager(view?.context)
-        recyclerView.adapter = adapterRecycler*/
+        recyclerView.adapter = adapterRecycler
 
     }
 
@@ -62,7 +66,6 @@ class ArticlesFragment : Fragment() {
 
     private suspend fun getData(source: String, country: String, category: String, action:String) {
         withContext(Dispatchers.IO) {
-
             var result: ArticlesResponse?
 
             if(action == Endpoints.EVERYTHING)
@@ -73,7 +76,15 @@ class ArticlesFragment : Fragment() {
             val articles = result?.articles
             if(articles != null) {
                 Log.v("ArticlesFragment", "Articles fetched count : " + articles.size)
+                setData(articles)
             }
+        }
+    }
+
+    private suspend fun setData( articles : Array<Article>) {
+        withContext(Dispatchers.Main) {
+            adapter.dataset.addAll(articles)
+            adapter.notifyDataSetChanged()
         }
     }
 }
