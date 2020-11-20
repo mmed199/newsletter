@@ -9,11 +9,20 @@
     <Button
         android:id="@+id/button_editor"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.3"
         android:layout_height="wrap_content"
         android:text="@string/editor"
-        app:layout_constraintTop_toTopOf = "parent"
-        app:layout_constraintBottom_toTopOf = "@+id/button_category"
+        app:layout_constraintBottom_toTopOf="@+id/button_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <TextView
+        android:id="@+id/text_editor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintTop_toBottomOf = "@id/button_editor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
@@ -30,6 +39,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
+    <TextView
+        android:id="@+id/text_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintTop_toBottomOf = "@id/button_category"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
     <Button
         android:id="@+id/button_country"
         android:layout_width="0dp"
@@ -37,8 +56,43 @@
         android:layout_height="wrap_content"
         android:text="@string/country"
         app:layout_constraintTop_toBottomOf="@id/button_category"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_clear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
+
+    <TextView
+        android:id="@+id/text_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintTop_toBottomOf = "@id/button_country"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/button_clear"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.3"
+        android:layout_height="wrap_content"
+        android:text="@string/clear"
+        app:layout_constraintTop_toBottomOf="@id/button_country"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_search"
+        />
+
+    <Button
+        android:id="@+id/button_search"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.3"
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        app:layout_constraintTop_toBottomOf="@id/button_country"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_clear"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

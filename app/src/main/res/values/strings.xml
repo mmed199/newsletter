@@ -10,10 +10,12 @@
 
     <string name="pick_category">Pick a Category from the list :</string>
     <string name="pick_country">Pick a Country from the list :</string>
+    <string name="pick_editor">Pick an Editor from the list :</string>
 
 
-    <string-array
-        name="categories">
+    <string name="clear">Clear</string>
+    <string name="search">Search</string>
+    <string-array name="categories">
         <item>Sport</item>
         <item>Economy</item>
         <item>Science</item>
@@ -23,4 +25,6 @@
     </string-array>
 
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
