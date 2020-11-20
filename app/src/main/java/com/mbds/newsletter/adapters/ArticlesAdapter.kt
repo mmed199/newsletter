@@ -19,7 +19,7 @@ public class ArticleAdapter(public var dataset: MutableList<Article>) : Recycler
         fun bind(item: Article) {
 
             binding.articleTitle.text = item.title
-            binding.articleAuthor.text = "By :" + item.author
+            binding.articleAuthor.text = "By :" + (item.author?:"None")
             binding.articleDescription.text = item.description
 
 
