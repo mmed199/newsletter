@@ -5,9 +5,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.mbds.newsletter.fragments.HomeFragment
+import java.nio.file.Files.delete
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
 
 fun MainActivity.changeFragment(fragment: Fragment) {
     supportFragmentManager.beginTransaction().apply {
