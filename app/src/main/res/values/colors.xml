@@ -11,4 +11,7 @@
     <color name = "black">#000000</color>
     <color name = "azure">#03DAC5</color>
 
+    <color name="error">#B71C1C</color>
+    <color name="succes">#2E7D32</color>
+    <color name="primary">#0277BD</color>
 </resources>

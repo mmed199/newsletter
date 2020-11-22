@@ -9,6 +9,7 @@
 
 
     <Button
+        android:backgroundTint="@color/primary"
         android:id="@+id/button_editor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -30,6 +31,7 @@
         />
 
     <Button
+        android:backgroundTint="@color/primary"
         android:id="@+id/button_category"
         android:layout_width="0dp"
         app:layout_constraintWidth_percent="0.4"
@@ -52,6 +54,7 @@
         />
 
     <Button
+        android:backgroundTint="@color/primary"
         android:id="@+id/button_country"
         android:layout_width="0dp"
         app:layout_constraintWidth_percent="0.4"
@@ -75,6 +78,7 @@
 
     <Button
         android:id="@+id/button_clear"
+        android:backgroundTint="@color/error"
         android:layout_width="0dp"
         app:layout_constraintWidth_percent="0.3"
         android:layout_height="wrap_content"
@@ -87,6 +91,7 @@
 
     <Button
         android:id="@+id/button_search"
+        android:backgroundTint="@color/succes"
         android:layout_width="0dp"
         app:layout_constraintWidth_percent="0.3"
         android:layout_height="wrap_content"
