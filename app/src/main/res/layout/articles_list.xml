@@ -5,14 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:background="@color/black"
-    android:paddingBottom="5dp"
+    android:layout_margin="8dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/article_image"
@@ -21,50 +20,59 @@
             android:src="@drawable/ic_launcher_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"
+            />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/article_title"
-            style="@style/TextAppearance.AppCompat.Display2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:paddingHorizontal="16dp"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintEnd_toStartOf="@id/favorite_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/article_image"
             app:layout_constraintWidth_percent="0.8"
-            tools:text="" />
+            tools:text="Title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/article_author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:paddingHorizontal="16dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?android:attr/textColorSecondary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/article_title" />
+            app:layout_constraintTop_toBottomOf="@+id/article_title"
+            android:text="Author"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/article_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:paddingHorizontal="16dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/article_author"
+            android:text="Date"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/article_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:paddingBottom="16dp"
+            android:paddingHorizontal="16dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?android:attr/textColorSecondary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/article_author" />
+            app:layout_constraintTop_toBottomOf="@+id/article_date"
+            android:text="description"/>
 
-        <!-- <com.google.android.material.button.MaterialButton
-            android:id="@+id/favorite_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/article_description"
-            android:text="Favorite"
-            /> -->
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/favorite_button"

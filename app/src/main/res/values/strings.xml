@@ -24,7 +24,24 @@
         <item>Culture</item>
     </string-array>
 
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="favorites">Favorites</string>
+    <string name="about_us">About Us</string>
+
+    <string name="read_more">Read More</string>
+
+    <string name="project_description">Fonctionalités :  \n
+        - Notre application permet un filtrage multiple sur l\'Api newsApi \n
+        - On peut filtrer par pays, categorie, editeur ou en utilisant plusieurs filtres \n
+        - Le filtre editeur affiche par defaut la liste de tout les editeurs \n
+        - Si on choisit un pays, la liste des edituer s\'actualise avec les editeurs du pays selectionné\n
+        - L\'application interoge le EndPoint HeadLines pour reecupere les articles d\'un pays vu que le EndPoint EveryThing ne donne pas cette option \n
+        - On peut ajouter ou supprimer des article en favoris pour les sauvegarder en local \n \n \n
+
+        Librairies : \n
+        - retrofit, okhttp, gson pour consommer l\'API \n
+        - Room pour la base de donnes local \n
+        - skeleton et shimmerlayout pour afficher un Skeleton en attendant le chargement des articles
+
+    </string>
 </resources>

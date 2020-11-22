@@ -31,4 +31,5 @@ class FavoriteViewModel(application: Application): AndroidViewModel(application)
             repository.deleteFavorite(id)
         }
     }
+
 }

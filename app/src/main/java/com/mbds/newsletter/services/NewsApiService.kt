@@ -11,8 +11,8 @@ interface NewsApiService {
     fun sources(@Query("category") category : String, @Query("country") country : String): Call<SourcesResponse>
 
     @GET("/v2/everything")
-    fun everything(@Query("q") category : String, @Query("sources") sources : String): Call<ArticlesResponse>
+    fun everything(@Query("q") category : String, @Query("sources") sources : String,  @Query("page") page : Int = 1): Call<ArticlesResponse>
 
     @GET("/v2/top-headlines")
-    fun headlines(@Query("country") country : String, @Query("q") category: String): Call<ArticlesResponse>
+    fun headlines(@Query("country") country : String, @Query("q") category: String,  @Query("page") page : Int = 1): Call<ArticlesResponse>
 }

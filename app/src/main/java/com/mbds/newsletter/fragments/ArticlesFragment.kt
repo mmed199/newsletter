@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import com.ethanhua.skeleton.Skeleton
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.ArticleAdapter
 import com.mbds.newsletter.database.AppDatabase
@@ -23,6 +24,7 @@ import com.mbds.newsletter.models.Article
 import com.mbds.newsletter.models.ArticlesResponse
 import com.mbds.newsletter.models.Source
 import com.mbds.newsletter.repositories.NewsApiRepository
+import com.mbds.newsletter.utils.Converter
 import com.mbds.newsletter.utils.Endpoints
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -58,19 +60,30 @@ class ArticlesFragment : Fragment(), ArticleClickListener {
         recyclerView.layoutManager = LinearLayoutManager(view?.context)
         recyclerView.adapter = adapterRecycler
 
+        var skeletonScreen = Skeleton.bind(recyclerView)
+            .adapter(adapter)
+            .load(R.layout.articles_list)
+            .show();
+
         db = ViewModelProvider(this).get(FavoriteViewModel::class.java)
 
         db.allFavorites.observe(viewLifecycleOwner, Observer {
                 data ->
-            Log.v("ArticlesFragment", "Favorites fetched count : " + data.size)
-            favorites = data.toTypedArray()
-            adapter.favorites = favorites
-            adapter.notifyDataSetChanged()
+                    Log.v("ArticlesFragment", "Favorites fetched count : " + data.size)
+                    favorites = data.toTypedArray()
+                    adapter.favorites = favorites
+
+                    if(action == Endpoints.FAVORITES)
+                        adapter.dataset = Converter.favoritesToArticles(favorites)
+                    adapter.notifyDataSetChanged()
         })
 
-        lifecycleScope.launch {
-            getData(source = source, category = category, country = country, action =   action)
-        }
+        if(action != Endpoints.FAVORITES)
+            lifecycleScope.launch {
+                getData(source = source, category = category, country = country, action =   action)
+            }
+
+        skeletonScreen.hide()
     }
 
     companion object {
@@ -110,6 +123,7 @@ class ArticlesFragment : Fragment(), ArticleClickListener {
 
     override fun onCustomerClick(article: Article, favoriteId:Int?) {
         Log.v("ArticlesFragment", "Favorite Clicked in Article ")
+
         if(favoriteId == null)
             db.addFavorite(article)
         else

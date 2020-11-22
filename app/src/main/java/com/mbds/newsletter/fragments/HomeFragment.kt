@@ -77,10 +77,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.buttonClear.setOnClickListener {
-            binding.textEditor.text = ""
-            binding.textCountry.text = ""
-            binding.textCategory.text = ""
-            
+            clear()
             lifecycleScope.launch {
                 getSources()
             }
@@ -94,6 +91,18 @@ class HomeFragment : Fragment() {
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        clear()
+    }
+
+    fun clear() {
+        binding.textEditor.text = ""
+        binding.textCountry.text = ""
+        binding.textCategory.text = ""
+        editor = ""
+        country = ""
+    }
     fun categoriesAlert(){
 
         val builder = AlertDialog.Builder(activity)

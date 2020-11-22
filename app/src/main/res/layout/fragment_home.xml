@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.3" />
+        app:layout_constraintWidth_percent="0.4" />
 
     <TextView
         android:id="@+id/text_editor"
@@ -33,7 +33,7 @@
     <Button
         android:id="@+id/button_category"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintWidth_percent="0.4"
         android:layout_height="wrap_content"
         android:text="@string/category"
         app:layout_constraintTop_toBottomOf = "@id/button_editor"
@@ -55,7 +55,7 @@
     <Button
         android:id="@+id/button_country"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintWidth_percent="0.4"
         android:layout_height="wrap_content"
         android:text="@string/country"
         app:layout_constraintTop_toBottomOf="@id/button_category"

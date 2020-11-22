@@ -13,5 +13,7 @@ class Favorite (
     val urlToImage: String,
     val title:String,
     val description:String,
-    val source: String?
+    val source: String?,
+    val content: String,
+    val publishedAt:String
 )

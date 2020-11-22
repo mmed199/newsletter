@@ -1,18 +1,17 @@
 package com.mbds.newsletter.adapters
 
-import android.app.Application
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
-import com.mbds.newsletter.database.FavoriteViewModel
+import com.mbds.newsletter.changeFragment
 import com.mbds.newsletter.database.data.Favorite
 import com.mbds.newsletter.databinding.ArticlesListBinding
+import com.mbds.newsletter.fragments.ArticleDetailsFragment
+import com.mbds.newsletter.fragments.ArticlesFragment
 import com.mbds.newsletter.listeners.ArticleClickListener
 import com.mbds.newsletter.models.Article
 
@@ -27,9 +26,9 @@ public class ArticleAdapter(var dataset: MutableList<Article>, var favorites: Ar
         fun bind(item: Article, articleClickListener: ArticleClickListener, favoriteId: Int?) {
 
             binding.articleTitle.text = item.title
-            binding.articleAuthor.text = "By :" + (item.author?:"None")
-            binding.articleDescription.text = item.description
-
+            binding.articleAuthor.text = "By :" + (item.author?:" None")
+            binding.articleDescription.text = getFirstWords(item.description?:"", 20)
+            binding.articleDate.text = "Published at : " + item.publishedAt.split("T")[0]
             if(favoriteId != null)
                 binding.favoriteButton.setImageResource(android.R.drawable.btn_star_big_on)
             else
@@ -46,6 +45,26 @@ public class ArticleAdapter(var dataset: MutableList<Article>, var favorites: Ar
                 articleClickListener.onCustomerClick(item, favoriteId)
             }
 
+            binding.articleTitle.setOnClickListener {
+                (root?.context as? MainActivity)?.changeFragment(
+                    ArticleDetailsFragment.newInstance(item, favoriteId)
+                )
+            }
+
+        }
+
+        fun getFirstWords(text: String, count: Int): String {
+            if(text == "") return ""
+            var textArray = text.split(" ")
+
+            if(textArray.size < count) return text
+
+            var toReturn = ""
+            for (i in 0 until count - 1) {
+                toReturn += textArray[i] + " "
+            }
+
+            return toReturn + "..."
         }
     }
 
@@ -72,6 +91,8 @@ public class ArticleAdapter(var dataset: MutableList<Article>, var favorites: Ar
     }
 
     override fun getItemCount(): Int = dataset.size
+
+
 
 
 }

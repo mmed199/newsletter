@@ -59,13 +59,13 @@ class NewsApiRepository {
         return response.body()
     }
 
-    fun everything(category : String, sources:String): ArticlesResponse? {
-        val response = service.everything(category = category, sources = sources).execute()
+    fun everything(category : String, sources:String, page:Int=1): ArticlesResponse? {
+        val response = service.everything(category = category, sources = sources, page = page).execute()
         return response.body()
     }
 
-    fun headlines(country:String, category : String): ArticlesResponse? {
-        val response = service.headlines(category = category, country = country).execute()
+    fun headlines(country:String, category : String, page:Int=1): ArticlesResponse? {
+        val response = service.headlines(category = category, country = country, page = page).execute()
         return response.body()
     }
 
