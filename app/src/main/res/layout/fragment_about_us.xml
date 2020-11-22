@@ -11,7 +11,7 @@
 
 
     <TextView
-        android:id="@+id/gorup_names"
+        android:id="@+id/group_names"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -29,7 +29,7 @@
         android:textAlignment="textStart"
         android:textAppearance="?attr/textAppearanceBody2"
         android:text="@string/project_description"
-        app:layout_constraintTop_toTopOf="@+id/gorup_names"
+        app:layout_constraintTop_toTopOf="@+id/group_names"
         app:layout_constraintBottom_toTopOf="@id/github_button"
         android:padding="16dp"
         />
