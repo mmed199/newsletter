@@ -14,6 +14,33 @@
         tools:listitem="@layout/articles_list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_next"
+        />
+
+
+    <Button
+        android:backgroundTint="@color/primary"
+        android:id="@+id/button_previous"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Previous"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf = "@id/button_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/article_recycler_view"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:backgroundTint="@color/primary"
+        android:id="@+id/button_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        app:layout_constraintStart_toEndOf="@id/button_previous"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/article_recycler_view"
+        app:layout_constraintWidth_percent="0.3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
