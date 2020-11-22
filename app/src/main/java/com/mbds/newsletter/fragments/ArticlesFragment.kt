@@ -6,12 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.ArticleAdapter
+import com.mbds.newsletter.database.AppDatabase
+import com.mbds.newsletter.database.FavoriteViewModel
+import com.mbds.newsletter.database.data.Favorite
 import com.mbds.newsletter.databinding.FragmentArticlesBinding
+import com.mbds.newsletter.listeners.ArticleClickListener
 import com.mbds.newsletter.models.Article
 import com.mbds.newsletter.models.ArticlesResponse
 import com.mbds.newsletter.models.Source
@@ -22,16 +29,18 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class ArticlesFragment : Fragment() {
+class ArticlesFragment : Fragment(), ArticleClickListener {
 
-    private lateinit var source:String
-    private lateinit var category: String
-    private lateinit var country: String
-    private lateinit var action: String
+    private var source:String = ""
+    private var category: String = ""
+    private var country: String = ""
+    private var action: String = ""
+    private var favorites: Array<Favorite> = emptyArray()
 
     private lateinit var binding: FragmentArticlesBinding
     private val repository: NewsApiRepository = NewsApiRepository()
-    private val adapter = ArticleAdapter(mutableListOf())
+    private val adapter = ArticleAdapter(mutableListOf(), emptyArray(), this)
+    private lateinit var db: FavoriteViewModel
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -42,15 +51,26 @@ class ArticlesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lifecycleScope.launch {
-            getData(source = source, category = category, country = country, action =   action)
-        }
+
 
         val recyclerView: RecyclerView = view.findViewById(R.id.article_recycler_view)
         val adapterRecycler = adapter
         recyclerView.layoutManager = LinearLayoutManager(view?.context)
         recyclerView.adapter = adapterRecycler
 
+        db = ViewModelProvider(this).get(FavoriteViewModel::class.java)
+
+        db.allFavorites.observe(viewLifecycleOwner, Observer {
+                data ->
+            Log.v("ArticlesFragment", "Favorites fetched count : " + data.size)
+            favorites = data.toTypedArray()
+            adapter.favorites = favorites
+            adapter.notifyDataSetChanged()
+        })
+
+        lifecycleScope.launch {
+            getData(source = source, category = category, country = country, action =   action)
+        }
     }
 
     companion object {
@@ -87,4 +107,13 @@ class ArticlesFragment : Fragment() {
             adapter.notifyDataSetChanged()
         }
     }
+
+    override fun onCustomerClick(article: Article, favoriteId:Int?) {
+        Log.v("ArticlesFragment", "Favorite Clicked in Article ")
+        if(favoriteId == null)
+            db.addFavorite(article)
+        else
+            db.deleteFavorite(favoriteId)
+    }
+
 }

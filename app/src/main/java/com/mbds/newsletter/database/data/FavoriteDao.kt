@@ -1,18 +1,18 @@
-package com.mbds.newsletter.database.dao
+package com.mbds.newsletter.database.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.mbds.newsletter.database.data.Favorite
 import com.mbds.newsletter.models.Article
 
 @Dao
 interface FavoriteDao {
-    @Query("SELECT * FROM favorites ORDER BY id ASC")
+    @Query("SELECT * FROM favorites")
     fun getAll(): LiveData<List<Favorite>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addUser(favorite: Favorite)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addFavorite(favorite: Favorite)
+
+    @Query("DELETE FROM favorites WHERE id = :id")
+    suspend fun deleteFavorite(id: Int)
 }
