@@ -1,104 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.ArticleDetailsFragment"
-    android:layout_marginTop="20dp">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:context=".fragments.ArticleDetailsFragment"
+        android:paddingVertical="20dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_marginTop="30dp"
-        android:id="@+id/article_detail_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_marginTop="30dp"
+            android:id="@+id/article_detail_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/article_detail_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:paddingHorizontal="16dp"
-        android:textAppearance="?attr/textAppearanceHeadline6"
-        app:layout_constraintEnd_toStartOf="@id/favorite_detail_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/article_detail_image"
-        app:layout_constraintWidth_percent="0.8"
-        tools:text="Title" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/article_detail_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingHorizontal="16dp"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintEnd_toStartOf="@id/favorite_detail_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/article_detail_image"
+            app:layout_constraintWidth_percent="0.8"
+            tools:text="Title" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/article_detail_author"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:paddingHorizontal="16dp"
-        android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="?android:attr/textColorSecondary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/article_detail_title"
-        android:text="Author"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/article_detail_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingHorizontal="16dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/article_detail_title"
+            android:text="Author"/>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/article_detail_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:paddingHorizontal="16dp"
-        android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="?android:attr/textColorSecondary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/article_detail_author"
-        android:text="Date"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/article_detail_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:paddingHorizontal="16dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/article_detail_author"
+            android:text="Date"/>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/article_detail_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
-        android:paddingHorizontal="16dp"
-        android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="?android:attr/textColorSecondary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/article_detail_date"
-        android:text="description"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/article_detail_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:paddingHorizontal="16dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/article_detail_date"
+            android:text="description"/>
 
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/favorite_detail_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/article_detail_author"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/article_detail_title"
-        app:layout_constraintTop_toBottomOf="@id/article_detail_image"
-        app:layout_constraintWidth_percent="0.2"
-        app:srcCompat="@android:drawable/star_big_off" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/favorite_detail_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            app:layout_constraintBottom_toTopOf="@id/article_detail_author"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/article_detail_title"
+            app:layout_constraintTop_toBottomOf="@id/article_detail_image"
+            app:layout_constraintWidth_percent="0.2"
+            app:srcCompat="@android:drawable/star_big_off" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/article_detail_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:textAppearance="?attr/textAppearanceBody2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/article_detail_description"
-        />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/article_detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/article_detail_description"
+            />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/read_more_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/article_detail_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/read_more"
-        />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/read_more_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/article_detail_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/read_more"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
